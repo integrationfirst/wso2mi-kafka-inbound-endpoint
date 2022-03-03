@@ -61,6 +61,6 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.PACKAGE_REGISTRY_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./target/org.apache.synapse.kafka.poll-${{ steps.project_version.outputs.version }}.jar
-        asset_name: org.apache.synapse.kafka.poll-${{ steps.project_version.outputs.version }}.jar
+        asset_path: ./target/wso2mi-kafka-inbound-endpoint-${{ steps.project_version.outputs.version }}.jar
+        asset_name: wso2mi-kafka-inbound-endpoint-${{ steps.project_version.outputs.version }}.jar
         asset_content_type: application/jar
