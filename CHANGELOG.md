@@ -1,1 +1,1 @@
-There is no change in this release
++ Fix NPE when sequence is not found
