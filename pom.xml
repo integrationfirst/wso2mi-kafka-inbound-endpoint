@@ -22,7 +22,7 @@ Copyright (c) 2017, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.apache.synapse.inbound.kafka</groupId>
     <artifactId>org.apache.synapse.kafka.poll</artifactId>
-    <version>1.0.11-SNAPSHOT2</version>
+    <version>1.0.11-SNAPSHOT3</version>
     <name>Kafka Polling Consumer</name>
     <url>https://wso2.org</url>
     <packaging>bundle</packaging>
@@ -150,7 +150,7 @@ Copyright (c) 2017, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
         <repository>
 			<id>github</id>
 			<name>GitHub Packages</name>
-			<url>https://maven.pkg.github.com/spsvnhub/wso2mi-kafka-inbound-endpoint</url>
+			<url>https://maven.pkg.github.com/spsvnhub/maven2</url>
 		</repository>
     </distributionManagement>
     <properties>
