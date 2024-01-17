@@ -22,7 +22,7 @@ Copyright (c) 2017, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.apache.synapse.inbound.kafka</groupId>
     <artifactId>wso2mi-kafka-inbound-endpoint</artifactId>
-    <version>1.0.112</version>
+    <version>1.0.113</version>
     <name>wso2mi-kafka-inbound-endpoint</name>
     <packaging>bundle</packaging>
 
@@ -46,76 +46,12 @@ Copyright (c) 2017, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
             <artifactId>kafka-clients</artifactId>
             <version>${kafka.version}</version>
         </dependency>
-        <!-- Carbon Mediation -->
         <dependency>
             <groupId>org.wso2.carbon.mediation</groupId>
             <artifactId>org.wso2.carbon.inbound.endpoint</artifactId>
             <version>${carbon.mediation.version}</version>
         </dependency>
     </dependencies>
-    <repositories>
-        <repository>
-            <id>wso2-maven2-repository</id>
-            <url>https://dist.wso2.org/maven2</url>
-        </repository>
-        <repository>
-            <id>central</id>
-            <url>https://repo1.maven.org/maven2/</url>
-        </repository>
-        <repository>
-            <id>atlassian-contrib</id>
-            <url>https://maven.atlassian.com/contrib</url>
-        </repository>
-        <repository>
-            <id>atlassian-proxy</id>
-            <url>https://maven.atlassian.com/repository/public</url>
-        </repository>
-        <repository>
-            <id>atlassian-public</id>
-            <url>https://maven.atlassian.com/public/</url>
-            <snapshots>
-                <enabled>true</enabled>
-                <updatePolicy>never</updatePolicy>
-                <checksumPolicy>warn</checksumPolicy>
-            </snapshots>
-            <releases>
-                <enabled>true</enabled>
-                <checksumPolicy>warn</checksumPolicy>
-            </releases>
-        </repository>
-        <repository>
-            <id>wso2-nexus</id>
-            <name>WSO2 internal Repository</name>
-            <url>https://maven.wso2.org/nexus/content/groups/wso2-public/</url>
-            <releases>
-                <enabled>true</enabled>
-                <updatePolicy>never</updatePolicy>
-                <checksumPolicy>ignore</checksumPolicy>
-            </releases>
-        </repository>
-        <repository>
-            <id>wso2</id>
-            <name>WSO2 internal Repository</name>
-            <url>https://dist.wso2.org/maven2/</url>
-            <releases>
-                <enabled>true</enabled>
-                <updatePolicy>never</updatePolicy>
-                <checksumPolicy>ignore</checksumPolicy>
-            </releases>
-        </repository>
-        <repository>
-            <id>wso2.snapshots</id>
-            <name>WSO2 Snapshot Repository</name>
-            <url>https://maven.wso2.org/nexus/content/repositories/snapshots/</url>
-            <snapshots>
-                <enabled>true</enabled>
-                <updatePolicy>never</updatePolicy>
-            </snapshots>
-            <releases>
-                <enabled>false</enabled>
-            </releases>
-        </repository>
-    </repositories>
 
     <build>
         <plugins>
