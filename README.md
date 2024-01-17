@@ -6,7 +6,7 @@ Kafka inbound endpoint acts as a message consumer. It creates a connection to Zo
 
 | Inbound Endpoint version                                                                                  | Supported Kafka version | Supported WSO2 ESB/EI version            |
 |-----------------------------------------------------------------------------------------------------------|-------------------------|------------------------------------------|
-| [1.0.112](https://github.com/wso2-extensions/esb-inbound-kafka/tree/org.apache.synapse.kafka.poll-1.0.10) | 2.13-3.6.1               | EI 6.5.0  , MI 4.2.0                     |
+| [1.0.113](https://github.com/wso2-extensions/esb-inbound-kafka/tree/org.apache.synapse.kafka.poll-1.0.10) | 2.13-3.6.1               | EI 6.5.0  , MI 4.2.0                     |
 | [1.0.10](https://github.com/wso2-extensions/esb-inbound-kafka/tree/org.apache.synapse.kafka.poll-1.0.10)  | 2.12-2.2.1              | EI 6.1.1, EI 6.4.0, EI 6.5.0  , MI 1.1.0 |
 | [1.0.9](https://github.com/wso2-extensions/esb-inbound-kafka/tree/v1.0.9)                                 | 2.12-2.2.1              | EI 6.1.1, EI 6.4.0, EI 6.5.0  , MI 1.1.0 |
 | [1.0.8](https://github.com/wso2-extensions/esb-inbound-kafka/tree/v1.0.8)                                 | 2.12-2.2.1              | EI 6.1.1, EI 6.4.0, EI 6.5.0  , MI 1.1.0 |
