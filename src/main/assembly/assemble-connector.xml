@@ -19,21 +19,20 @@
 <assembly>
     <id>connector</id>
     <formats>
-        <format>dir</format>
+        <format>zip</format>
     </formats>
     <includeBaseDirectory>false</includeBaseDirectory>
     <fileSets>
         <fileSet>
-            <directory>target/connector/dependencies</directory>
+            <directory>${project.build.directory}/connector/dependencies</directory>
             <outputDirectory>lib</outputDirectory>
         </fileSet>
         <fileSet>
-            <directory>target/classes</directory>
+            <directory>${project.build.directory}</directory>
             <outputDirectory></outputDirectory>
-            <excludes>
-                <exclude>**/metrics_module.xml</exclude>
-                <exclude>**/META-INF/*</exclude>
-            </excludes>
+            <includes>
+                <include>${build.finalName}.jar</include>
+            </includes>
         </fileSet>
     </fileSets>
 </assembly>
