@@ -22,7 +22,7 @@ Copyright (c) 2017, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.apache.synapse.inbound.kafka</groupId>
     <artifactId>wso2mi-kafka-inbound-endpoint</artifactId>
-    <version>1.0.113</version>
+    <version>1.0.114</version>
     <name>wso2mi-kafka-inbound-endpoint</name>
     <packaging>bundle</packaging>
 
@@ -169,7 +169,7 @@ Copyright (c) 2017, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
                             <goal>single</goal>
                         </goals>
                         <configuration>
-                            <finalName>${connector.name}-connector-${connector.version}</finalName>
+                            <finalName>${project.artifactId}-${connector.version}</finalName>
                             <appendAssemblyId>false</appendAssemblyId>
                             <filters>
                                 <filter>src/main/assembly/filter.properties</filter>
