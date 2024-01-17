@@ -23,9 +23,23 @@ Copyright (c) 2017, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
     <groupId>org.apache.synapse.inbound.kafka</groupId>
     <artifactId>wso2mi-kafka-inbound-endpoint</artifactId>
     <version>1.0.111</version>
-    <name>Kafka Polling Consumer</name>
-    <url>https://wso2.org</url>
+    <name>Kafka Consumer</name>
     <packaging>bundle</packaging>
+
+    <properties>
+        <connector.name>kafka-consume</connector.name>
+        <connector.version>${project.version}</connector.version>
+        <carbon.mediation.version>4.4.10</carbon.mediation.version>
+        <kafka.version>2.2.1</kafka.version>
+        <metrics-core.version>2.2.0</metrics-core.version>
+        <scala-library.version>2.12.3</scala-library.version>
+        <zkclient.version>0.10</zkclient.version>
+        <zookeeper.version>3.4.10</zookeeper.version>
+        <avro.version>1.8.1</avro.version>
+        <confluent-common.version>5.4.0</confluent-common.version>
+        <kafka-avro.version>5.3.0</kafka-avro.version>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.apache.kafka</groupId>
@@ -102,16 +116,7 @@ Copyright (c) 2017, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
             </releases>
         </repository>
     </repositories>
-    <scm>
-        <connection>
-            scm:git:https://github.com/wso2-extensions/esb-inbound-kafka.git
-        </connection>
-        <url>https://github.com/wso2-extensions/esb-inbound-kafka.git</url>
-        <developerConnection>
-            scm:git:https://github.com/wso2-extensions/esb-inbound-kafka
-        </developerConnection>
-        <tag>HEAD</tag>
-    </scm>
+
     <build>
         <plugins>
             <plugin>
@@ -143,7 +148,103 @@ Copyright (c) 2017, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
                     </instructions>
                 </configuration>
             </plugin>
-
+            <plugin>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>copy</id>
+                        <phase>generate-test-resources</phase>
+                        <goals>
+                            <goal>copy</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.build.directory}/connector/dependencies</outputDirectory>
+                            <artifactItems>
+                                <artifactItem>
+                                    <groupId>org.apache.kafka</groupId>
+                                    <artifactId>kafka-clients</artifactId>
+                                    <version>${kafka.version}</version>
+                                    <type>jar</type>
+                                    <overWrite>true</overWrite>
+                                </artifactItem>
+                                <artifactItem>
+                                        <groupId>org.apache.kafka</groupId>
+                                        <artifactId>kafka_2.12</artifactId>
+                                    <version>${kafka.version}</version>
+                                </artifactItem>
+                                <artifactItem>
+                                        <groupId>com.yammer.metrics</groupId>
+                                        <artifactId>metrics-core</artifactId>
+                                        <version>${metrics-core.version}</version>
+                                </artifactItem>
+                                <artifactItem>
+                                        <groupId>org.scala-lang</groupId>
+                                        <artifactId>scala-library</artifactId>
+                                        <version>${scala-library.version}</version>
+                                </artifactItem>
+                                <artifactItem>
+                                        <groupId>com.101tec</groupId>
+                                        <artifactId>zkclient</artifactId>
+                                        <version>${zkclient.version}</version>
+                                </artifactItem>
+                                <artifactItem>
+                                        <groupId>org.apache.zookeeper</groupId>
+                                        <artifactId>zookeeper</artifactId>
+                                        <version>${zookeeper.version}</version>
+                                </artifactItem>
+                                <artifactItem>
+                                        <groupId>org.apache.avro</groupId>
+                                        <artifactId>avro</artifactId>
+                                        <version>${avro.version}</version>
+                                </artifactItem>
+                                <artifactItem>
+                                        <groupId>io.confluent</groupId>
+                                        <artifactId>common-config</artifactId>
+                                        <version>${confluent-common.version}</version>
+                                </artifactItem>
+                                <artifactItem>
+                                        <groupId>io.confluent</groupId>
+                                        <artifactId>common-utils</artifactId>
+                                        <version>${confluent-common.version}</version>
+                                </artifactItem>
+                                <artifactItem>
+                                        <groupId>io.confluent</groupId>
+                                        <artifactId>kafka-avro-serializer</artifactId>
+                                        <version>${kafka-avro.version}</version>
+                                </artifactItem>
+                                <artifactItem>
+                                        <groupId>io.confluent</groupId>
+                                        <artifactId>kafka-schema-registry-client</artifactId>
+                                        <version>${kafka-avro.version}</version>
+                                </artifactItem>
+                            </artifactItems>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>create-archive</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                        <configuration>
+                            <finalName>${connector.name}-connector-${connector.version}</finalName>
+                            <appendAssemblyId>false</appendAssemblyId>
+                            <filters>
+                                <filter>src/main/assembly/filter.properties</filter>
+                            </filters>
+                            <descriptors>
+                                <descriptor>src/main/assembly/assemble-connector.xml</descriptor>
+                            </descriptors>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
     <distributionManagement>
@@ -153,8 +254,5 @@ Copyright (c) 2017, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
 			<url>https://maven.pkg.github.com/spsvnhub/wso2mi-kafka-connector</url>
 		</repository>
     </distributionManagement>
-    <properties>
-        <carbon.mediation.version>4.4.10</carbon.mediation.version>
-        <kafka.version>2.2.1</kafka.version>
-    </properties>
+
 </project>
