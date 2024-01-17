@@ -23,7 +23,7 @@ Copyright (c) 2017, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
     <groupId>org.apache.synapse.inbound.kafka</groupId>
     <artifactId>wso2mi-kafka-inbound-endpoint</artifactId>
     <version>1.0.112</version>
-    <name>Kafka Consumer</name>
+    <name>wso2mi-kafka-inbound-endpoint</name>
     <packaging>bundle</packaging>
 
     <properties>
